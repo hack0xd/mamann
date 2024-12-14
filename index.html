@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تبریک به مامان</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #ffcccc, #ffe6e6);
+            text-align: center;
+            overflow: hidden;
+        }
+
+        header {
+            padding: 20px;
+            background: rgba(255, 0, 0, 0.7);
+            color: white;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        #gift {
+            margin: 50px auto;
+            padding: 20px;
+            background: url('https://cdn.pixabay.com/photo/2016/11/22/19/13/gift-1859612_960_720.png') no-repeat center;
+            background-size: contain;
+            width: 150px;
+            height: 150px;
+            cursor: pointer;
+        }
+
+        #message {
+            display: none;
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,0,0,1) 60%);
+            border-radius: 50%;
+            animation: float 4s ease-in infinite;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: gold;
+            border-radius: 50%;
+            animation: sparkle 2s infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh); }
+            100% { transform: translateY(-10vh); }
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>مامان عزیزم</h1>
+        <p>روی کادو کلیک کن!</p>
+    </header>
+
+    <div id="gift" onclick="celebrate()"></div>
+
+    <div id="message">مامان عزیزم، ممنون برای همه چیز! ❤️</div>
+
+    <script>
+        function createBalloon() {
+            const balloon = document.createElement('div');
+            balloon.className = 'balloon';
+            balloon.style.left = Math.random() * 100 + 'vw';
+            balloon.style.background = `radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(${Math.random()*255},${Math.random()*255},${Math.random()*255},1) 60%)`;
+            document.body.appendChild(balloon);
+            setTimeout(() => balloon.remove(), 4000);
+        }
+
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 100 + 'vw';
+            sparkle.style.top = Math.random() * 100 + 'vh';
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 2000);
+        }
+
+        function celebrate() {
+            const message = document.getElementById('message');
+            message.style.display = 'block';
+
+            for (let i = 0; i < 50; i++) {
+                setTimeout(createBalloon, i * 100);
+                setTimeout(createSparkle, i * 100);
+            }
+        }
+    </script>
+</body>
+</html>
