@@ -28,7 +28,7 @@
         #gift {
             margin: 50px auto;
             padding: 20px;
-            background: url('https://cdn.pixabay.com/photo/2016/11/22/19/13/gift-1859612_960_720.png') no-repeat center;
+            background: url('gift.png') no-repeat center;
             background-size: contain;
             width: 150px;
             height: 150px;
@@ -45,8 +45,8 @@
             position: absolute;
             width: 50px;
             height: 70px;
-            background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,0,0,1) 60%);
-            border-radius: 50%;
+            background: url('bad.png') no-repeat center;
+            background-size: contain;
             animation: float 4s ease-in infinite;
         }
 
@@ -57,6 +57,15 @@
             background: gold;
             border-radius: 50%;
             animation: sparkle 2s infinite;
+        }
+
+        .flower {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: url('gol.png') no-repeat center;
+            background-size: contain;
+            animation: float 4s ease-in infinite;
         }
 
         @keyframes float {
@@ -85,7 +94,6 @@
             const balloon = document.createElement('div');
             balloon.className = 'balloon';
             balloon.style.left = Math.random() * 100 + 'vw';
-            balloon.style.background = `radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(${Math.random()*255},${Math.random()*255},${Math.random()*255},1) 60%)`;
             document.body.appendChild(balloon);
             setTimeout(() => balloon.remove(), 4000);
         }
@@ -99,6 +107,15 @@
             setTimeout(() => sparkle.remove(), 2000);
         }
 
+        function createFlower() {
+            const flower = document.createElement('div');
+            flower.className = 'flower';
+            flower.style.left = Math.random() * 100 + 'vw';
+            flower.style.top = Math.random() * 100 + 'vh';
+            document.body.appendChild(flower);
+            setTimeout(() => flower.remove(), 4000);
+        }
+
         function celebrate() {
             const message = document.getElementById('message');
             message.style.display = 'block';
@@ -106,6 +123,7 @@
             for (let i = 0; i < 50; i++) {
                 setTimeout(createBalloon, i * 100);
                 setTimeout(createSparkle, i * 100);
+                setTimeout(createFlower, i * 100);
             }
         }
     </script>
